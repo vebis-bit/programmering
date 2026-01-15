@@ -16,26 +16,86 @@ og kan brukes til å skrive lengre kommentarer
 over flere linjer.
 """
 
+"""
+Her printer jeg 
+alle verdiene mine
+"""
+print(tall) # her printer jeg tallet mitt
+print(desimaltall) #dette er et desimaltall
 
-# print(tall)
-# print(desimaltall)
-# print(tekst)
-# print(sant)
-# print(liste)
+print(tekst) #for å huske hva alt i koden min gjør kommenterer jeg den underveis
+print(sant) #dette er en boolsk verdi
+print(liste) # dette er en liste
+
+# Hva er feil
+# tall != 1
+# 2teks = "hei på deg!"
+# bol = true
+# en_liste = {1,2,3,4,5}
 
 
 # Morsomme ting man kan gjøre med variabler
 
-#print(tall + 10)           # Legger til 10 til tall
-#print(tall + desimaltall)    # Legger sammen tall og desimaltall
-#print(tall*tall)        # Ganger tall med seg selv
-#print(tall**3)        # Opphøyer tall i tredje potens
-#print(tekst + " Blom-Hagen")    # Legger til " Blom-Hagen" til teksten
-#print("Hei, " + tekst + "!")  # Kombinerer tekst med andre strenger
-#print(tekst * 3)        # Gjentar teksten 3 ganger
-#print(liste + [6, 7, 8])   # Legger til flere elementer i listen
-#print(liste * 2)        # Gjentar listen 2 ganger
-#print(liste[0])        # Henter ut det første elementet i listen
-#print(liste[1:4])      # Henter ut elementene med index 1 til 3 (4 er ikke med)
-#print(len(liste))      # Finner lengden på listen
+# morro med tall (integer/float)
+# tall += 1
+# tall -= 1
+# tall *= 2
+# print(tall + 10)         
+# print(tall + desimaltall)    
+# print(tall*tall)        
+# print(tall**3)        
+
+# morro med tekst (string)
+# print(tekst + " Blom-Hagen")    
+# print("Hei, " + tekst + "!")  
+# print(tekst * 3)
+# ekstra kul tekst (f-string)
+# f_string = f'{tekst2} {tekst} hvor mange år er du? jeg er {tall} år gammel'
+# print(f_string)
+
+
+# morro med boolse verdier
+# print(sant)
+# print(not sant)
+# print(sant == True)
+# print(tall == desimaltall)
+# print(tall != desimaltall)
+# print(tall >= desimaltall)
+# print(sant + sant)
+
+# morro med lister (list/array)
+# print(liste + [6, 7, 8])   
+# print(liste * 2)        
+# print(liste[0])        
+# print(liste[1:4])
+# ny_liste = liste[3:]
+# print(ny_liste)
+# ny_liste = liste[:3]
+# print(ny_liste)
+# print(len(liste))
+# liste = ["hei","på", "deg", "din", "gamle", "sei", 1, 2, 3, 4]
+# print(liste)
+
+
+# avansert matte🙃
+
+# modulus
+# er tallet delelig på ... hvis ikke returner rest
+# print(6 % 2)
+# print(6 % 3)
+# print(6 % 4)
+# print(6 % 5)
+# print(6 % 6)
+
+# heltallsdivisjon
+# Hvor mange ganger er tallet delelig på ... bare glem rest
+# print(6 // 2)
+# print(6 // 3)
+# print(6 // 4)
+# print(6 // 5)
+# print(6 // 6)
+
+
+
+
 

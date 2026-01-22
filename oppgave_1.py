@@ -1,5 +1,5 @@
 #TODO definer en variabel
-#tall =
+tall = 'hei'
 
 #TODO print variabelen
 

@@ -1,8 +1,8 @@
 # Variabler i Python
-tall = 5
+tall = 15
 desimaltall = 3.14
 tekst = "Vebjørn"
-tekst2 = 'Hei på deg!'
+tekst2 = 'Hei på deg,'
 sant = True
 liste = [1, 2, 3, 4, 5]
 index = [0, 1, 2, 3, 4]
@@ -20,12 +20,12 @@ over flere linjer.
 Her printer jeg 
 alle verdiene mine
 """
-print(tall) # her printer jeg tallet mitt
-print(desimaltall) #dette er et desimaltall
+# print(tall) # her printer jeg tallet mitt
+# print(desimaltall) #dette er et desimaltall
 
-print(tekst) #for å huske hva alt i koden min gjør kommenterer jeg den underveis
-print(sant) #dette er en boolsk verdi
-print(liste) # dette er en liste
+# print(tekst) #for å huske hva alt i koden min gjør kommenterer jeg den underveis
+# print(sant) #dette er en boolsk verdi
+# print(liste) # dette er en liste
 
 # Hva er feil
 # tall != 1
@@ -40,6 +40,7 @@ print(liste) # dette er en liste
 # tall += 1
 # tall -= 1
 # tall *= 2
+# print(tall)
 # print(tall + 10)         
 # print(tall + desimaltall)    
 # print(tall*tall)        
@@ -54,7 +55,7 @@ print(liste) # dette er en liste
 # print(f_string)
 
 
-# morro med boolse verdier
+# morro med boolske verdier
 # print(sant)
 # print(not sant)
 # print(sant == True)
@@ -66,7 +67,7 @@ print(liste) # dette er en liste
 # morro med lister (list/array)
 # print(liste + [6, 7, 8])   
 # print(liste * 2)        
-# print(liste[0])        
+# print(liste[2])        
 # print(liste[1:4])
 # ny_liste = liste[3:]
 # print(ny_liste)
@@ -87,13 +88,16 @@ print(liste) # dette er en liste
 # print(6 % 5)
 # print(6 % 6)
 
+# if 100 % 10 == 0:
+#     print('tallet er i 10 gangern')
+
 # heltallsdivisjon
 # Hvor mange ganger er tallet delelig på ... bare glem rest
-# print(6 // 2)
+print(6 // 2)
 # print(6 // 3)
-# print(6 // 4)
-# print(6 // 5)
-# print(6 // 6)
+print(6 // 4)
+print(6 // 5)
+print(6 // 6)
 
 
 

@@ -18,3 +18,5 @@ if tall != 6:
     print(f'{tall} er ikke lik 6')
 else:
     print(f'{tall} er lik 6')
+
+

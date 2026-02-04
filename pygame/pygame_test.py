@@ -1,13 +1,13 @@
 import sys, pygame
 pygame.init()
 
-size = width, height = 1080, 720
+size = width, height = 10800, 720
 speed = [1, 1]
 black = 0, 0, 0
 
 screen = pygame.display.set_mode(size)
 
-ball = pygame.image.load("tull.jpg")
+ball = pygame.image.load("tull.JPG")
 ballrect = ball.get_rect()
 
 while True:

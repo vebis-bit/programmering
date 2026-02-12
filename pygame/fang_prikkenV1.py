@@ -1,15 +1,20 @@
 import pygame
 import random
 import sys
+import os
 
 pygame.init() # Start pygame (må alltid gjøres)
-W, H = 600, 600 # Størrelse på skjerm
+W, H = 1200, 720 # Størrelse på skjerm
+poeng_fil = os.path.join(os.path.dirname(__file__), "poengsum_logg.txt")
+# Legge inn bilde
+bilde = pygame.image.load("bakgrunn.jpg")
+riktige_bilde = pygame.transform.scale(bilde, (W, H))
 
 skjerm = pygame.display.set_mode((W, H))
 pygame.display.set_caption("Fang de Fallende blokkene!")
 
 #Hva skjer hvis man erndrer tallene?
-HVIT, BLAA, ROD, SVART = (255, 255, 255), (0, 200, 255), (255, 0, 0), (0, 0, 0) # Farger vi bruker
+HVIT, FARGE, ROD, SVART = (255, 255, 255), (34, 200, 96), (255, 0, 0), (0, 0, 0) # Farger vi bruker
 
 # klokke og font
 klokke = pygame.time.Clock()
@@ -22,10 +27,24 @@ blokk_fart = 5
 fart_plate = 16
 poengsum = 0 # poengsum
 
+def lagre_poengsum(poeng):
+    with open(poeng_fil, "a", encoding="utf-8") as fil:
+        fil.write(f"{poeng}\n")
+
+def sjekk_highscore():
+    if not os.path.exists(poeng_fil):
+        return 0  # Ingen tidligere poengsum, så dette er en highscore
+    with open(poeng_fil, "r", encoding="utf-8") as fil:
+        poengsummer = [int(line.strip()) for line in fil if line.strip().isdigit()]
+    return max(poengsummer) if poengsummer else 0
+
+high_score = sjekk_highscore()
+
 # Game loop
 run = True
 while run:
     skjerm.fill(SVART)
+    skjerm.blit(riktige_bilde, (0, 0))
 
     for e in pygame.event.get():
         if e.type == pygame.QUIT:
@@ -56,14 +75,20 @@ while run:
         pygame.display.flip()
         pygame.time.wait(2000)
         run = False
+        lagre_poengsum(poengsum)
+        high_score = sjekk_highscore()
 
     # Tegn alt
     pygame.draw.rect(skjerm, HVIT, plate)
-    pygame.draw.rect(skjerm, BLAA, blokk)
+    pygame.draw.rect(skjerm, FARGE, blokk)
 
     # Vis poengsum
     poengsum_text = font.render(f"Poengsum: {poengsum}", True, HVIT)
     skjerm.blit(poengsum_text, (10, 10))
+
+    # Vis highscore
+    high_score_text = font.render(f"Highscore: {high_score}", True, HVIT)
+    skjerm.blit(high_score_text, (10, 40))
 
     pygame.display.flip()
     klokke.tick(60)

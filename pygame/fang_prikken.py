@@ -55,7 +55,7 @@ run = True
 while run:
     skjerm.fill(SVART)
     #skjerm.blit(bilde, (0, 0))
-    skjerm.blit(riktige_bilde, (0, 0))
+    #skjerm.blit(riktige_bilde, (0, 0))
 
     for e in pygame.event.get():
         if e.type == pygame.QUIT:

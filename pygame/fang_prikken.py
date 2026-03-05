@@ -27,7 +27,7 @@ def sjekk_highscore():
     with open(poeng_fil, "r", encoding="utf-8") as fil:
         poengsummer = [int(line.strip()) for line in fil if line.strip().isdigit()]
     return max(poengsummer) if poengsummer else 0
-    
+
 def lagre_poengsum(poeng):
     with open(poeng_fil, "a", encoding="utf-8") as fil:
         fil.write(f"{poeng}\n")
@@ -50,12 +50,17 @@ valgt_index = 0
 paused = False
 game_over_aktiv = False
 
+key_up = (pygame.K_w, pygame.K_UP)
+key_down = (pygame.K_s, pygame.K_DOWN)
+key_select = (pygame.K_RETURN, pygame.K_KP_ENTER)
+key_escape = (pygame.K_p, pygame.K_ESCAPE)
+
 # Game loop
 run = True
 while run:
     skjerm.fill(SVART)
     #skjerm.blit(bilde, (0, 0))
-    #skjerm.blit(riktige_bilde, (0, 0))
+    skjerm.blit(riktige_bilde, (0, 0))
 
     for e in pygame.event.get():
         if e.type == pygame.QUIT:
@@ -76,7 +81,7 @@ while run:
                     if valgt == "Fortsett":
                         paused = False
                     elif valgt == "Start pa nytt":
-                        plate, blokk, blokk_fart, poengsum = reset_spill()
+                        plate, blokk, blokk_fart, fart_plate, poengsum = reset_spill()
                         paused = False
                         game_over_aktiv = False
                         valgt_index = 0
@@ -101,7 +106,7 @@ while run:
             blokk.x = random.randint(0, W - 20)
             poengsum += 1
             blokk_fart += 0.5  # ok fart
-            
+
         # Game over logikk
         # Hvis blokken ikke blir fanget
         if blokk.y > H:
@@ -110,7 +115,7 @@ while run:
             valgt_index = 0
             lagre_poengsum(poengsum)
             high_score = sjekk_highscore()
-            
+
 
     # Tegn alt
     pygame.draw.rect(skjerm, HVIT, plate)
@@ -133,7 +138,7 @@ while run:
         if game_over_aktiv:
             aktive_valg = game_over_valg
             tittel_text = "GAME OVER"
-        else: 
+        else:
             aktive_valg = pause_valg
             tittel_text = "PAUSE"
 

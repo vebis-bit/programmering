@@ -38,6 +38,16 @@ def sjekk_highscore():
         poengsummer = [int(line.strip()) for line in fil if line.strip().isdigit()]
     return max(poengsummer) if poengsummer else 0
 
+def reset_spill():
+    # plate og blokk oppsett
+    plate = pygame.Rect(W // 2 - 60, H - 20, 120, 10)
+    blokk = pygame.Rect(random.randint(0, W - 20), 0, 20, 20)
+    blokk_fart = 5
+    poengsum = 0
+    fart_plate = 16
+    return plate, blokk, blokk_fart, fart_plate, poengsum
+
+plate, blokk, blokk_fart, fart_plate, poengsum = reset_spill()
 high_score = sjekk_highscore()
 
 # Game loop

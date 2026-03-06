@@ -14,11 +14,12 @@ pygame.display.set_caption("Fang de Fallende blokkene!")
 
 #Hva skjer hvis man erndrer tallene?
 HVIT, BLAA, ROD, SVART = (255, 255, 255), (0, 0, 255), (255, 0, 0), (45, 207, 102) # Farger vi bruker
+ny_farge =(1,23,45)
 
 # klokke og font
 klokke = pygame.time.Clock()
-font = pygame.font.SysFont(None, 36)
-stor_font = pygame.font.SysFont(None, 64)
+font = pygame.font.SysFont("Sans", 36)
+stor_font = pygame.font.SysFont("Papyrus", 64)
 
 
 def sjekk_highscore():
@@ -67,16 +68,16 @@ while run:
             pygame.quit()
             sys.exit()
         if e.type == pygame.KEYDOWN:
-            if e.key in (pygame.K_p, pygame.K_ESCAPE):
+            if e.key in key_escape:
                 if not game_over_aktiv:
                     paused = not paused
             elif paused:
                 aktive_valg = game_over_valg if game_over_aktiv else pause_valg
-                if e.key in (pygame.K_w, pygame.K_UP):
+                if e.key in key_up:
                     valgt_index = (valgt_index - 1) % len(aktive_valg)
-                elif e.key in (pygame.K_s, pygame.K_DOWN):
+                elif e.key in key_down:
                     valgt_index = (valgt_index + 1) % len(aktive_valg)
-                elif e.key in (pygame.K_RETURN, pygame.K_KP_ENTER):
+                elif e.key in key_select:
                     valgt = aktive_valg[valgt_index]
                     if valgt == "Fortsett":
                         paused = False

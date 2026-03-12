@@ -107,7 +107,7 @@ while run:
         blokk.y += blokk_fart
 
         # tilfeldig bombe som faller
-        if not bombe_aktiv and random.randint(1, 300) == 1:
+        if not bombe_aktiv and random.randint(1, 30) == 1:
             bombe_aktiv = True
             bombe_x = random.randint(bombe_radius, W - bombe_radius)
             bombe_y = -bombe_radius

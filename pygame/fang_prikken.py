@@ -40,9 +40,14 @@ def reset_spill():
     blokk_fart = 5
     poengsum = 0
     fart_plate = 16
-    return plate, blokk, blokk_fart, fart_plate, poengsum
+    bombe_aktiv = False
+    bombe_x = 0
+    bombe_y = 0
+    bombe_radius = 12
+    bombe_fart = 7
+    return plate, blokk, blokk_fart, fart_plate, poengsum, bombe_aktiv, bombe_x, bombe_y, bombe_radius, bombe_fart
 
-plate, blokk, blokk_fart, fart_plate, poengsum = reset_spill()
+plate, blokk, blokk_fart, fart_plate, poengsum, bombe_aktiv, bombe_x, bombe_y, bombe_radius, bombe_fart = reset_spill()
 high_score = sjekk_highscore()
 
 pause_valg = ["Fortsett", "Start pa nytt", "Avslutt"]
@@ -82,7 +87,7 @@ while run:
                     if valgt == "Fortsett":
                         paused = False
                     elif valgt == "Start pa nytt":
-                        plate, blokk, blokk_fart, fart_plate, poengsum = reset_spill()
+                        plate, blokk, blokk_fart, fart_plate, poengsum, bombe_aktiv, bombe_x, bombe_y, bombe_radius, bombe_fart = reset_spill()
                         paused = False
                         game_over_aktiv = False
                         valgt_index = 0
@@ -100,6 +105,29 @@ while run:
 
         # flytt blokk
         blokk.y += blokk_fart
+
+        # tilfeldig bombe som faller
+        if not bombe_aktiv and random.randint(1, 300) == 1:
+            bombe_aktiv = True
+            bombe_x = random.randint(bombe_radius, W - bombe_radius)
+            bombe_y = -bombe_radius
+
+        if bombe_aktiv:
+            bombe_y += bombe_fart
+            bombe_rect = pygame.Rect(
+                bombe_x - bombe_radius,
+                bombe_y - bombe_radius,
+                bombe_radius * 2,
+                bombe_radius * 2
+            )
+            if bombe_rect.colliderect(plate):
+                paused = True
+                game_over_aktiv = True
+                valgt_index = 0
+                lagre_poengsum(poengsum)
+                high_score = sjekk_highscore()
+            elif bombe_y - bombe_radius > H:
+                bombe_aktiv = False
 
         # Hvis blokken blir fanget
         if blokk.colliderect(plate):
@@ -121,6 +149,8 @@ while run:
     # Tegn alt
     pygame.draw.rect(skjerm, HVIT, plate)
     pygame.draw.rect(skjerm, BLAA, blokk)
+    if bombe_aktiv:
+        pygame.draw.circle(skjerm, ROD, (bombe_x, bombe_y), bombe_radius)
 
     # Vis poengsum
     poengsum_text = font.render(f"Poengsum: {poengsum}", True, HVIT)
